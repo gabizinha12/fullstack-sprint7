@@ -4,6 +4,8 @@ import br.com.rchlo.store.domain.Product;
 
 import java.math.BigDecimal;
 
+import org.springframework.data.domain.Page;
+
 public class ProductDto {
 
     private final Long code;
@@ -62,6 +64,10 @@ public class ProductDto {
     public BigDecimal getOriginalPrice() {
         return originalPrice;
     }
+    public static Page<ProductDto> converter(Page<Product> products) {
+        return products.map(ProductDto::new);
+    }
+
 
     public boolean isHasDiscount() {
         return hasDiscount;
