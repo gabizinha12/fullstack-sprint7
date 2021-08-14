@@ -48,8 +48,7 @@ class ProductRepositoryTest {
                 Color.WHITE,
                 98));
 
-        List<Product> products = productRepository.findAll();
-
+        List<Product> products = productRepository.findAllByOrderByName();
         assertEquals(2, products.size());
 
         Product firstProduct = products.get(0);
