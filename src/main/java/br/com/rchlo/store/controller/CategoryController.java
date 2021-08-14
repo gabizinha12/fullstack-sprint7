@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.rchlo.store.dto.CategoryDto;
@@ -14,12 +15,10 @@ public class CategoryController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-	public CategoryController(CategoryRepository categoryRepository) {
-		this.categoryRepository = categoryRepository;
-	}
 
+    @GetMapping("/categories")
 	public List<CategoryDto> orderedByPosition() {
-    return categoryRepository.findAllByPosition().stream().map(CategoryDto::new).collect(Collectors.toList());
+    return categoryRepository.findAllByOrderByPosition().stream().map(CategoryDto::new).collect(Collectors.toList());
 	}
 
 }

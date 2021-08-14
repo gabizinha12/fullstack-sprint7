@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import br.com.rchlo.store.domain.Category;
 
 public interface CategoryRepository extends JpaRepository<Category, Long>{
-	List<Category> findAllByPosition();
+    List<Category> findAllByOrderByPosition();
 
 }
